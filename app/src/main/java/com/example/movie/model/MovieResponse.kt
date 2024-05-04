@@ -1,5 +1,7 @@
 package com.example.movie.model
 
+import java.io.Serializable
+
 data class MovieResponse(
     val page: Int,
     val results: List<Result>,
@@ -21,5 +23,5 @@ data class MovieResponse(
         val video: Boolean,
         val vote_average: Double,
         val vote_count: Int
-    )
+    ) : Serializable
 }

@@ -17,17 +17,21 @@ object RetrofitClient {
     val logging = HttpLoggingInterceptor()
     logging.level = (HttpLoggingInterceptor.Level.BODY)
 
-//    val interceptor = Interceptor {chain ->
-//      val original = chain.request()
-//      val originalHttpUrl = original.url
-//      val url = originalHttpUrl.newBuilder()
+//    val requestInterceptor = Interceptor {chain ->
+//      val url = chain.request()
+//        .url
+//        .newBuilder()
 //        .addQueryParameter("api_key", api_key)
 //        .build()
 //
-//      val requestBuilder = original.newBuilder()
+//      val request = chain.request()
+//        .newBuilder()
+//        .addHeader("accept", "application/json")
+//        .addHeader("Authorization", "Bearer $token")
 //        .url(url)
-//      val request = requestBuilder.build()
-//      chain.proceed(request)
+//        .build()
+//
+//      return@Interceptor chain.proceed(request)
 //    }
 
     val requestInterceptor = Interceptor {chain ->
@@ -40,11 +44,12 @@ object RetrofitClient {
       val request = chain.request()
         .newBuilder()
         .url(url)
+        .addHeader("Authorization", "Bearer $token")
+        .addHeader("accept", "application/json")
         .build()
 
-      return@Interceptor  chain.proceed(request)
+      return@Interceptor chain.proceed(request)
     }
-
 
     val client = OkHttpClient.Builder()
     client.addInterceptor(logging)

@@ -5,12 +5,13 @@
     android:layout_height="wrap_content"
     android:background="@drawable/bg_raw"
     android:orientation="horizontal"
+    android:layout_marginBottom="10dp"
     android:padding="12dp">
 
     <ImageView
         android:id="@+id/iv_movie"
         android:layout_width="100dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:src="@drawable/ic_launcher_background" />
 

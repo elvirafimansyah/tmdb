@@ -3,110 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_margin="16dp"
     android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Popular Movie" />
+        android:layout_marginBottom="10dp"
+        android:text="Popular Movie"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
-    <LinearLayout
-        android:background="@drawable/bg_raw"
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/sv_search"
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        android:layout_height="wrap_content" >
-        <ImageView
-            android:src="@drawable/ic_launcher_background"
-            android:layout_width="100dp"
-            android:layout_marginRight="10dp"
-            android:layout_height="match_parent" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" >
-                <TextView
-                    android:id="@+id/tv_title"
-                    android:textSize="16dp"
-                    android:textColor="@color/white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="2"
-                    android:textStyle="bold"
-                    android:ellipsize="end"
-                    android:text="Godzilla x Kong: The New Empire" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_popularity"
-                    />
-                <TextView
-                    android:id="@+id/tv_popularity"
-                    android:textColor="@color/white"
-                    android:textSize="12dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1000" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_language"
-                android:textSize="12dp"
-                android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="2"
-                android:ellipsize="end"
-                android:text="Language: EN" />
-
-            <LinearLayout
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_time"
-                    android:layout_marginRight="3dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_release"
-                    android:textSize="12dp"
-                    android:textColor="@color/white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="25-05-2004" />
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_search"
+        android:layout_marginBottom="10dp"
+        app:iconifiedByDefault="false"
+        app:queryHint="Search here..." />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_movie"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="3"
+        tools:listitem="@layout/movie_card" />
 </LinearLayout>
